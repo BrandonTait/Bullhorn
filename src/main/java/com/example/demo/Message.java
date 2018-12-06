@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Message {
@@ -13,14 +13,13 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NotNull
     @NotBlank
+    @Size(max=255)
     private String content;
 
-    @NotNull
+    @NotBlank
     private String posteddate;
 
-    @NotNull
     @NotBlank
     private String sentby;
 
