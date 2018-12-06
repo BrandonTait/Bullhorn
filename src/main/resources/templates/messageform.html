@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Title</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+<br> <br />
+<a class="btn btn-primary" href="/add">New Message</a>
+<a class="btn btn-outline-primary" href="/">Back to Message List</a> <br />
+ <br />
+    <form action="#"
+        th:action = "@{/process}"
+        th:object = "${message}"
+        method = "post">
+        <input type = "hidden" th:field="*{id}" />
+        <div class="form-group">
+          <label>Post Date: </label>
+          <input type="date" class = "form-control" th:field="*{posteddate}" />
+            <span th:if="${#fields.hasErrors('posteddate')}"
+              th:errors="*{posteddate}"></span>
+        </div>
+        <div class="form-group">
+        <label>Sent By: </label>
+        <input type ="text" class = "form-control" th:field = "*{sentby}" />
+        <span th:if="${#fields.hasErrors('sentby')}"
+                      th:errors="*{sentby}"></span>
+        </div>
+        <div class="form-group">
+        Content : <br />
+        <textarea class="form-control" rows = 3 cols = 75 th:field="*{content}"  />
+        <span th:if="${#fields.hasErrors('content')}"
+              th:errors="*{content}"></span>
+        </div>
+
+        <input class="btn btn-primary" type ="submit" value="Submit" />
+</form>
+</div>
+</body>
+</html>
